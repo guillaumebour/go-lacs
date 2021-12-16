@@ -63,13 +63,25 @@ func Unzip(src, dest string) (string, error) {
 		return nil
 	}
 
-	for _, f := range r.File {
+	dirName := ""
+	for k, f := range r.File {
+		if k == 0 {
+			dirName = GetRootDir(f.Name)
+		}
 		err := extractAndWriteFile(f)
 		if err != nil {
 			return "", err
 		}
 	}
 
-	tmpStr := strings.Split(r.File[0].Name, "/")
-	return tmpStr[1], nil
+	return dirName, nil
+}
+
+func GetRootDir(path string) string {
+	withSep := filepath.FromSlash(path)
+	split := strings.Split(withSep, string(os.PathSeparator))
+	if len(split) > 0 {
+		return split[0]
+	}
+	return ""
 }

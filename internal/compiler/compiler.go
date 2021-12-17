@@ -25,7 +25,7 @@ func prepareDir(dir string) (string, error) {
 		return "", err
 	}
 
-	fmt.Printf("Current dir: %s", currDir)
+	fmt.Printf("Current dir: %s\n", currDir)
 	if err := os.Chdir(dir); err != nil {
 		return "", err
 	}

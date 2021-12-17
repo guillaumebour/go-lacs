@@ -25,12 +25,14 @@ func CompilationHandler(ctx *gin.Context) {
 		return
 	}
 
+	log.Printf("Creating upload directory...\n")
 	if err := os.MkdirAll(UploadDir, os.ModePerm); err != nil {
 		log.Printf("error while creating upload directory: %v", err)
 		ctx.String(http.StatusInternalServerError, "an error occurred while creating the upload dir")
 
 	}
 
+	log.Printf("Creating working directory...\n")
 	tempDir, err := ioutil.TempDir(UploadDir, "upload")
 	if err != nil {
 		log.Printf("error while creating temp directory: %v", err)
@@ -46,6 +48,7 @@ func CompilationHandler(ctx *gin.Context) {
 		return
 	}
 
+	log.Printf("Saving zip file to %s...\n", destZipFile.Name())
 	err = ctx.SaveUploadedFile(file, destZipFile.Name())
 	if err != nil {
 		log.Printf("could not save uploaded file: %v", err)
@@ -53,6 +56,7 @@ func CompilationHandler(ctx *gin.Context) {
 		return
 	}
 
+	log.Printf("Extracting zip file...\n")
 	dirName, err := archive.Unzip(destZipFile.Name(), tempDir)
 	if err != nil {
 		log.Printf("error while unzipping: %v", err)

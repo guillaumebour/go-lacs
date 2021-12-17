@@ -4,6 +4,7 @@ import (
 	"archive/zip"
 	"fmt"
 	"io"
+	"log"
 	"os"
 	"path/filepath"
 	"strings"
@@ -67,7 +68,9 @@ func Unzip(src, dest string) (string, error) {
 	for k, f := range r.File {
 		if k == 0 {
 			dirName = GetRootDir(f.Name)
+			log.Printf("Identified main directory: %s\n", dirName)
 		}
+		log.Printf("Extracting and writing %s\n", f.Name)
 		err := extractAndWriteFile(f)
 		if err != nil {
 			return "", err

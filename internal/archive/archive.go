@@ -84,7 +84,7 @@ func GetRootDir(path string) string {
 	withSep := filepath.FromSlash(path)
 	split := strings.Split(withSep, string(os.PathSeparator))
 	if len(split) > 0 {
-		return split[0]
+		return split[1]
 	}
 	return ""
 }

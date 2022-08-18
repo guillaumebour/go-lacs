@@ -2,6 +2,7 @@ package compiler
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"os/exec"
 	"strings"
@@ -12,6 +13,9 @@ type CompilationOptions struct {
 }
 
 func CompileWithToC(dir, mainFile string) (string, error) {
+	log.Printf("Will compile with ToC...\n")
+	log.Printf("Root dir = %s\n", dir)
+	log.Printf("Main File = %s\n", mainFile)
 	return compile(dir, mainFile, 2)
 }
 
@@ -25,12 +29,9 @@ func prepareDir(dir string) (string, error) {
 		return "", err
 	}
 
-	fmt.Printf("Current dir: %s\n", currDir)
 	if err := os.Chdir(dir); err != nil {
 		return "", err
 	}
-
-	fmt.Printf("switching to: %s", dir)
 
 	return currDir, nil
 }

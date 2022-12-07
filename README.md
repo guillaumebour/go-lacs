@@ -6,6 +6,8 @@ installed on the machine and that the `pdflatex` binary is available in the PATH
 
 The envisioned used however, is in a docker container, to have *LaTeX as a Service*. 
 
+**Important**: Do not use with untrusted inputs.
+
 ## Requirements
 
 If run without Docker, a LaTeX distribution with `pdflatex` in the PATH.

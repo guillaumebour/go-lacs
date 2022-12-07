@@ -10,6 +10,7 @@ import (
 	"strings"
 )
 
+// Adapted from https://stackoverflow.com/a/24792688
 func Unzip(src, dest string) (string, error) {
 	r, err := zip.OpenReader(src)
 	if err != nil {

@@ -1,8 +1,8 @@
 package server
 
 import (
-	"LaTeXCompilationService/internal/archive"
-	"LaTeXCompilationService/internal/compiler"
+	"github.com/guillaumebour/go-lacs/internal/archive"
+	"github.com/guillaumebour/go-lacs/internal/compiler"
 	"github.com/gin-gonic/gin"
 	"io/ioutil"
 	"log"

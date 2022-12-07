@@ -1,4 +1,4 @@
-FROM golang:1.16.0-buster AS build
+FROM golang:1.19.0-buster AS build
 
 COPY . src/lacs
 WORKDIR src/lacs

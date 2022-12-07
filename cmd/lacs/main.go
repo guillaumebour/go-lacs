@@ -1,7 +1,7 @@
 package main
 
 import (
-	"LaTeXCompilationService/internal/server"
+	"github.com/guillaumebour/go-lacs/internal/server"
 	"fmt"
 )
 
